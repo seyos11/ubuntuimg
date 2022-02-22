@@ -3,12 +3,12 @@ entries:
   linux:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-02-08T16:53:01.952167524+01:00"
+    created: "2022-02-22T22:48:50.881717802+01:00"
     description: A Helm chart for Kubernetes
-    digest: 3df65631327f437640ca539981c3f0bee7454b3c01b5f16a3e9497c1dfaf4166
+    digest: 10a73b359a91a939f3de596983c4dac5dc5c1be8860f2c173e2846b223516328
     name: linux
     type: application
     urls:
     - https://josevirseda.github.io/ubuntuimg/linux-0.1.0.tgz
     version: 0.1.0
-generated: "2022-02-08T16:53:01.951488287+01:00"
+generated: "2022-02-22T22:48:50.881174299+01:00"
