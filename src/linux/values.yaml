@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: ubuntu
+  repository: 2stacks/vyos
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: latest
+  tag: 1.1.7
 
 imagePullSecrets: []
 nameOverride: ""
