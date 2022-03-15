@@ -32,10 +32,14 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          command: ["/bin/sleep", "3650d"]
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "bash post-run.sh"]
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            {{- toYaml .Values.ports | nindent 8}}
+            - containerPort: 179
+            - containerPort: 8080
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
