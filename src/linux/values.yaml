@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: seyos/vyos
+  repository: seyos11/vyos
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: 1.3
