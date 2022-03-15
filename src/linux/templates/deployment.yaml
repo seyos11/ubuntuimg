@@ -35,7 +35,7 @@ spec:
           command: ["/bin/sleep", "3650d"]
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            {{ - toYaml .Values.ports | nindent 8}}
+            {{- toYaml .Values.ports | nindent 8}}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
