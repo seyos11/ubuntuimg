@@ -2,13 +2,13 @@ apiVersion: v1
 entries:
   linux:
   - apiVersion: v2
-    appVersion: 1.6.0
-    created: "2022-02-22T22:48:50.881717802+01:00"
+    appVersion: 1.16.0
+    created: "2022-03-10T12:08:28.992520265+01:00"
     description: A Helm chart for Kubernetes
-    digest: 10a73b359a91a939f3de596983c4dac5dc5c1be8860f2c173e2846b223516328
+    digest: 820ebb14fb6aed9a5b1f871aa6bd6cd7a391799e8353cb1ff5652f278474c07d
     name: linux
     type: application
     urls:
     - https://seyos11.github.io/ubuntuimg/linux-0.1.0.tgz
     version: 0.1.0
-generated: "2022-02-22T22:48:50.881174299+01:00"
+generated: "2022-03-10T12:08:28.991280255+01:00"
