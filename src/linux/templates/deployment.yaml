@@ -1,45 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "linux.fullname" . }}
+  name: {{ include "ejemploubuntu.fullname" . }}
   labels:
-    {{- include "linux.labels" . | nindent 4 }}
+    {{- include "ejemploubuntu.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "linux.selectorLabels" . | nindent 6 }}
+      {{- include "ejemploubuntu.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+        k8s.v1.cni.cncf.io/networks: accessnet1,macvlan-conf
       labels:
-        {{- include "linux.selectorLabels" . | nindent 8 }}
+        {{- include "ejemploubuntu.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "linux.serviceAccountName" . }}
+      serviceAccountName: {{ include "ejemploubuntu.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
+            capabilities:
+              add: ["NET_ADMIN"]
+            privileged: true
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          lifecycle:
-            postStart:
-              exec:
-                command: ["/bin/sh", "-c", "bash post-run.sh"]
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - containerPort: 179
-            - containerPort: 8080
+          command: ["sh", "-c", "ip address add 10.255.0.1/24 dev net1; tail -f /dev/null"]
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
