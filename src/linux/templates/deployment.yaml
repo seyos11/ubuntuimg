@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "ejemploubuntu.fullname" . }}
+  name: {{ include "linux.fullname" . }}
   labels:
-    {{- include "ejemploubuntu.labels" . | nindent 4 }}
+    {{- include "linux.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "ejemploubuntu.selectorLabels" . | nindent 6 }}
+      {{- include "linux.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       annotations:
         k8s.v1.cni.cncf.io/networks: accessnet-4
       labels:
-        {{- include "ejemploubuntu.selectorLabels" . | nindent 8 }}
+        {{- include "linux.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "ejemploubuntu.serviceAccountName" . }}
+      serviceAccountName: {{ include "linux.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
