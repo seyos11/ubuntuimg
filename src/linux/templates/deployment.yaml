@@ -14,7 +14,7 @@ spec:
   template:
     metadata:
       annotations:
-        k8s.v1.cni.cncf.io/networks: accessnet, internal-net
+        k8s.v1.cni.cncf.io/networks: accessnet, internalnet-1
       labels:
         {{- include "linux.selectorLabels" . | nindent 8 }}
     spec:
