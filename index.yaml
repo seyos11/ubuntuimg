@@ -9,6 +9,6 @@ entries:
     name: linux
     type: application
     urls:
-    - https://seyos11.github.io/ubuntuimg/knf2.0.1.0.tgz
+    - https://seyos11.github.io/ubuntuimg/knf1.0.1.0.tgz
     version: 0.1.0
 generated: "2022-03-10T12:08:28.991280255+01:00"
