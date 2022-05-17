@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "knf1.fullname" . }}
+  name: {{ include "knf2.fullname" . }}
   labels:
-    {{- include "knf1.labels" . | nindent 4 }}
+    {{- include "knf2.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "knf1.selectorLabels" . | nindent 6 }}
+      {{- include "knf2.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       annotations:
         k8s.v1.cni.cncf.io/networks: extnet, internalnet-2
       labels:
-        {{- include "knf1.selectorLabels" . | nindent 8 }}
+        {{- include "knf2.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
