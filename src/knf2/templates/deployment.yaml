@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "linux.fullname" . }}
+  name: {{ include "knf1.fullname" . }}
   labels:
-    {{- include "linux.labels" . | nindent 4 }}
+    {{- include "knf1.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "linux.selectorLabels" . | nindent 6 }}
+      {{- include "knf1.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       annotations:
         k8s.v1.cni.cncf.io/networks: extnet, internalnet-2
       labels:
-        {{- include "linux.selectorLabels" . | nindent 8 }}
+        {{- include "knf1.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "linux.serviceAccountName" . }}
+      serviceAccountName: {{ include "knf1.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
