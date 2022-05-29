@@ -7,6 +7,6 @@ spec:
   config: '{ 
       "cniVersion": "0.3.0",
       "type": "macvlan",
-      "master": "eth4",
+      "master": "eth4.10",
       "mode": "passthru"
     }'
