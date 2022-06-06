@@ -36,10 +36,10 @@ spec:
           #command: ["/bin/sleep", "3650d"] 
           command: ["/bin/bash", "-c"]
           args:
-            - /usr/share/openvswitch/scripts/ovs-ctl start
-              ovs-vsctl add-br br0
-              ovs-vsctl add-port br0 net1
-              ovs-vsctl add-port br0 vxlan1 -- set interface vxlan1 type=vxlan options:remote_ip=192.168.16.2
+            - /usr/share/openvswitch/scripts/ovs-ctl start;
+              ovs-vsctl add-br br0;
+              ovs-vsctl add-port br0 net1;
+              ovs-vsctl add-port br0 vxlan1 -- set interface vxlan1 type=vxlan options:remote_ip=192.168.16.2;
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
