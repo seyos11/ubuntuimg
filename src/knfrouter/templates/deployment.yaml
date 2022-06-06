@@ -36,11 +36,11 @@ spec:
           #command: ["/bin/sleep", "3650d"] 
           command:
             - /bin/bash 
-            - -c
-            - >
-                /usr/share/openvswitch/scripts/ovs-ctl start;
-                ovs-vsctl add-br br0;
-                ovs-vsctl add-port br0 net1;
+            - -exc
+            - |
+                /usr/share/openvswitch/scripts/ovs-ctl start
+                ovs-vsctl add-br br0
+                ovs-vsctl add-port br0 net1
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
