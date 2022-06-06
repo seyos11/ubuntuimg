@@ -36,7 +36,7 @@ spec:
           #command: ["/bin/sleep", "3650d"] 
           command:
             - /bin/bash 
-            - c
+            - -c
             - >
                 /usr/share/openvswitch/scripts/ovs-ctl start;
                 ovs-vsctl add-br br0;
