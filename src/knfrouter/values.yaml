@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: seyos11/vnf-img
+  repository: seyos11/knf-img
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
